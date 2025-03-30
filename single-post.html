@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNews - Últimas Inovações</title>
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        /* Variáveis CSS */
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --text-color: #333;
+            --light-gray: #f3f4f6;
+            --dark-gray: #6b7280;
+        }
+
+        body {
+            background-color: #f9fafb;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: #fbbf24;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        nav ul li a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .article-header {
+            margin-bottom: 2rem;
+        }
+
+        .article-category {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .article-title {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+
+        .article-author {
+            margin-right: 1rem;
+            font-weight: 600;
+        }
+
+        .article-date::before {
+            content: "•";
+            margin: 0 0.5rem;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .article-content h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: var(--secondary-color);
+        }
+
+        .article-content blockquote {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--dark-gray);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1f2937;
+            color: white;
+            padding: 3rem 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo span {
+            color: #fbbf24;
+        }
+
+        .footer-about {
+            margin-bottom: 1.5rem;
+            color: #d1d5db;
+        }
+
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links ul li a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links ul li a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+            }
+
+            nav ul li {
+                margin: 0 0.5rem;
+            }
+
+            .article-title {
+                font-size: 1.8rem;
+            }
+
+            .article-image {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">Tech<span>News</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Notícias</a></li>
+                    <li><a href="#">Reviews</a></li>
+                    <li><a href="#">Tutoriais</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <article>
+            <div class="article-header">
+                <span class="article-category">Inteligência Artificial</span>
+                <h1 class="article-title">OpenAI anuncia GPT-5 com capacidades revolucionárias de raciocínio</h1>
+                <div class="article-meta">
+                    <span class="article-author">Por Carlos Silva</span>
+                    <!-- <span class="article-date">15 de Março de 2024</span> -->
+                </div>
+            </div>
+
+            <img src="https://images.unsplash.com/photo-1737894543924-15e1ff7adbdb?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z3B0fGVufDB8fDB8fHww" alt="GPT-5 Inteligência Artificial" class="article-image">
+
+            <div class="article-content">
+                <p>A OpenAI revelou nesta semana o lançamento do GPT-5, a mais nova versão de seu modelo de linguagem, que promete revolucionar a forma como interagimos com a inteligência artificial. Segundo a empresa, o novo modelo apresenta avanços significativos em compreensão contextual e raciocínio lógico.</p>
+
+                <h2>O que há de novo no GPT-5?</h2>
+
+                <p>Diferente de suas versões anteriores, o GPT-5 foi treinado com um conjunto de dados significativamente maior e apresenta uma arquitetura redesenhada que permite:</p>
+
+                <ul style="margin-bottom: 1.5rem; padding-left: 2rem;">
+                    <li>Compreensão de contextos complexos com até 128k tokens de memória</li>
+                    <li>Capacidade de raciocínio multidisciplinar integrado</li>
+                    <li>Processamento multimodal avançado (texto, imagem, áudio e vídeo)</li>
+                    <li>Tomada de decisão com explicações transparentes</li>
+                </ul>
+
+                <blockquote>
+                    "O GPT-5 representa um salto quântico na capacidade das IAs entenderem e interagirem com o mundo humano. Ele não apenas gera texto, mas demonstra compreensão genuína", afirmou Sam Altman, CEO da OpenAI.
+                </blockquote>
+
+                <h2>Impacto no mercado</h2>
+
+                <p>Analistas preveem que o lançamento do GPT-5 irá acelerar a adoção de IA em setores como educação, saúde e jurídico. A Microsoft, principal investidora da OpenAI, já anunciou a integração do novo modelo em seus produtos Office.</p>
+
+                <p>Contudo, especialistas em ética tecnológica alertam para os riscos de sistemas cada vez mais avançados, pedindo maior transparência nos processos de treinamento e implementação de salvaguardas robustas.</p>
+
+                <p>A OpenAI planeja liberar acesso limitado ao GPT-5 para desenvolvedores selecionados a partir do próximo trimestre, com versão pública prevista para 2025.</p>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">Tech<span>News</span></div>
+                <p class="footer-about">Sua fonte confiável de notícias e análises sobre tecnologia, inovação e o futuro digital.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="#">Sobre Nós</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Anuncie Conosco</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Categorias</h3>
+                <ul>
+                    <li><a href="#">Inteligência Artificial</a></li>
+                    <li><a href="#">Dispositivos Móveis</a></li>
+                    <li><a href="#">Segurança Digital</a></li>
+                    <li><a href="#">Startups</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Contato</h3>
+                <ul>
+                    <li><a href="mailto:contato@technews.com">contato@technews.com</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2024 TechNews. Todos os direitos reservados.
+        </div>
+    </footer>
+</body>
+</html>
